@@ -685,7 +685,7 @@ public class Commands implements CommandExecutor {
 			CommandSender to = Bukkit.getPlayer(args[0]);
 			if(to==null) {
 				if(args[0].equalsIgnoreCase("console"))
-					to=console;
+					return true;
 				else {
 					sender.sendMessage(Legendchat.getMessageManager().getMessage("error8"));
 					return true;
@@ -700,6 +700,7 @@ public class Commands implements CommandExecutor {
 					sender.sendMessage(Legendchat.getMessageManager().getMessage("wrongcmd").replace("@command", "/tell <player> ["+Legendchat.getMessageManager().getMessage("message")+"]"));
 					return true;
 				}
+				
 				if(Legendchat.getPrivateMessageManager().isPlayerTellLocked(sender)&&Legendchat.getPrivateMessageManager().getPlayerLockedTellWith(sender)==to) {
 					Legendchat.getPrivateMessageManager().unlockPlayerTell(sender);
 					sender.sendMessage(Legendchat.getMessageManager().getMessage("message11"));
